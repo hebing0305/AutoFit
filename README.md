@@ -10,7 +10,7 @@ compile 'com.bing:autofit:1.0.0'
 ## 使用说明
 
 ### 1.初始化
-在使用API前调用初始化：AutoFit.init()，参数需要传入设计图的尺寸，推荐在Applaction类的OnCreate()方法里
+在使用API前调用初始化一次：AutoFit.init()，参数需要传入设计图的尺寸等，推荐在Applaction类的OnCreate()方法里
 
 ### 2.单个View适配
 获取到需要适配的View，调用AutoFit.fit(view)即可。
