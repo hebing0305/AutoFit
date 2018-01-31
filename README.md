@@ -1,4 +1,5 @@
 # AutoFit
+[![API](https://img.shields.io/badge/API-15%2B-green.svg?style=flat)](https://android-arsenal.com/api?level=15)
 ## 说明
 这是一款Android屏幕适配方案。
 你只需要在xml里按照设计图上的PX尺寸填写，此lib可以帮你自动适应各种屏幕。   
