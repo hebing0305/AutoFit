@@ -1,12 +1,9 @@
-package com.bing.viewautofit;
+package com.bing.autofit;
 
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  * Created by bing.he on 2017/4/12.

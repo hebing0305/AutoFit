@@ -1,4 +1,4 @@
-package com.bing.viewautofit;
+package com.bing.autofit;
 
 import android.content.Context;
 import android.util.DisplayMetrics;
