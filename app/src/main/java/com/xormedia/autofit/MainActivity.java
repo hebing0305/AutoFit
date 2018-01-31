@@ -2,18 +2,18 @@ package com.xormedia.autofit;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.ListView;
+
+import com.bing.autofit.AutoFit;
 
 public class MainActivity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_main);
+    AutoFit.Init(this,1080,1920);
+    View view= LayoutInflater.from(this).inflate(R.layout.activity_main,null,false);
+    AutoFit.fit(view);
+    setContentView(view);
   }
 }

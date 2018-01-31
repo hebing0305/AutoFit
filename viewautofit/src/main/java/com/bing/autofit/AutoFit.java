@@ -38,23 +38,23 @@ public class AutoFit {
       if (params != null) {
         if (width >1) {
 //          System.out.println("\n转换方式:"+fitType);
-//          System.out.println(view.getId()+">>>>转换前宽："+params.width);
+          System.out.println(view.getId()+">>>>转换前宽："+params.width);
           if(fitType==FIT_TYPE.WIDTH||fitType==FIT_TYPE.WIDTH_HEIGHT) {
             params.width = (int) DisplayUtil.widthpx2px(width);
           }else{
             params.width = (int) DisplayUtil.heightpx2px(width);
           }
-//          System.out.println(view.getId()+">>>>转换后宽："+params.width);
+          System.out.println(view.getId()+">>>>转换后宽："+params.width);
         }
         if (height >1) {
 //          System.out.println("\n转换方式:"+fitType);
-//          System.out.println(view.getId()+">>>>转换前height："+params.height);
+          System.out.println(view.getId()+">>>>转换前height："+params.height);
           if (fitType==FIT_TYPE.HEIGHT||fitType==FIT_TYPE.WIDTH_HEIGHT) {
             params.height = (int) DisplayUtil.heightpx2px(height);
           } else {
             params.height = (int) DisplayUtil.widthpx2px(height);
           }
-//          System.out.println(view.getId()+">>>>转换后height："+params.height);
+          System.out.println(view.getId()+">>>>转换后height："+params.height);
         }
 
       }
@@ -110,7 +110,11 @@ public class AutoFit {
     //如果View是textview
     if (view instanceof TextView) {
       TextView textView = (TextView) view;
-      textView.setTextSize(DisplayUtil.px2sp(textView.getTextSize()));
+      if(textView.getTextSize()>1) {
+        System.out.println(textView+">>>>>>字体转换前："+textView.getTextSize()+" px");
+        textView.setTextSize(DisplayUtil.px2sp(textView.getTextSize()));
+        System.out.println(textView+">>>>>>字体转换为："+DisplayUtil.px2sp(textView.getTextSize())+" sp");
+      }
     }
     //如果有儿子 继续适配儿子
     if (view instanceof ViewGroup) {

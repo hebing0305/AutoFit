@@ -42,12 +42,15 @@ public class MainActivity extends AppCompatActivity {
 ### 5.在Adapter适配
 在Adapter的getview方法返回之前调用AutoFit.fit(convertView);
 ```java
+public class MyAdapter extends BaseAdapter{
+  //...
   @Override
   public View getView(int position, View convertView, ViewGroup parent) {
     //.....
     AutoFit.fit(convertView);
     return convertView;
   }
+ }
 ```
 
 
