@@ -7,7 +7,7 @@
 可以适配的属性目前有 View的宽高，magin，pading textview的size。
 ## 依赖方法
     compile 'com.bing:autofit:1.0.0'
-## 使用说明
+## 使用方法
 
 ### 1.初始化
 在使用API前调用初始化一次：AutoFit.init()，参数需要传入设计图的尺寸等，推荐在Applaction类的OnCreate()方法里
