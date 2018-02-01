@@ -17,10 +17,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    lintOptions {
-        abortOnError false
-        warning 'InvalidPackage'
-    }
 }
 
 dependencies {
@@ -28,14 +24,42 @@ dependencies {
 }
 
 /** 以下开始是将Android Library上传到jcenter的相关配置**/
-apply plugin: 'com.novoda.bintray-release'//添加
-//添加
+
+// 生成jar包的task，不需要修改。
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+// 生成jarDoc的task，不需要修改。
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    // destinationDir = file("../javadoc/")
+    failOnError false // 忽略注释语法错误，如果用jdk1.8你的注释写的不规范就编译不过。
+}
+
+// 生成javaDoc的jar，不需要修改。
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+apply plugin: 'com.novoda.bintray-release'
 publish {
     userOrg = 'hebing0305'//bintray.com用户名
-    repoName='bing'
+    repoName = 'bing'
     groupId = 'com.bing'//jcenter上的路径
-    artifactId = 'autofit'//项目名称
+    artifactId = 'AutoFit'//项目名称
     publishVersion = '1.0.0'//版本号
     desc = '一个Android屏幕适配方案'//描述，不重要
     website = 'https://github.com/hebing0305/AutoFit'//网站，不重要；尽量模拟github上的地址，例如我这样的；当然你有地址最好了
+    bintrayUser = 'hebing0305'
+    bintrayKey = 'ace5221f542a889163ea7cef5c9b09895a891f4b'
+    dryRun=false
 }
+
