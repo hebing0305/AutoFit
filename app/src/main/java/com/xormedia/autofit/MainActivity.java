@@ -11,7 +11,6 @@ public class MainActivity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    AutoFit.Init(this,1080,1920);
     View view= LayoutInflater.from(this).inflate(R.layout.activity_main,null,false);
     AutoFit.fit(view);
     setContentView(view);
