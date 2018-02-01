@@ -16,9 +16,6 @@ allprojects {
     repositories {
         google()
         jcenter()
-        maven{
-            url 'https://dl.bintray.com/hebing0305/bing/'
-        }
     }
 }
 

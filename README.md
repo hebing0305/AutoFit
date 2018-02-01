@@ -6,7 +6,7 @@
 适配的方式是按照设计图尺寸和屏幕尺寸的比例适配，相当于百分比适配，只需要你对需要调用适配方法传入需要适配的View即可。
 可以适配的属性目前有 View的宽高，magin，pading textview的size。
 ## 依赖方法
-    compile 'com.bing:autofit:1.0.0'
+    compile 'com.bing:AutoFit:1.0.0'
 ## 使用说明
 
 ### 1.初始化
