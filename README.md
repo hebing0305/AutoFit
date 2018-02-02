@@ -72,6 +72,8 @@ AutoFit.setViewLayoutParams(view,宽度，高度,FIT_TYPE.WIDTH);
 ```java
 AutoFit.fit(view,FIT_TYPE.WIDTH);
 ```
+2.效率
+有人可能会质疑效率问题，经过我的测试，1000行xml 嵌套5层 只用了62ms，所以完全不用担心效率问题
 
     
 
