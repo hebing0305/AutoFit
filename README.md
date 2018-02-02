@@ -39,6 +39,15 @@ public class MainActivity extends AppCompatActivity {
   }
 }
 ```
+如果不想再每个Activity都写上这么一句话，可以选择把代码写入BaseActivity,然后只需要继承他就好，比如这样：
+```java
+  @Override
+  public void setContentView(int layoutResID) {
+    View view= LayoutInflater.from(this).inflate(layoutResID,null,false);
+    AutoFit.fit(view);
+    super.setContentView(view);
+  }
+```
 ### 5.在Adapter适配所有View
 在Adapter的getview方法返回之前调用AutoFit.fit(convertView);
 ```java
