@@ -52,7 +52,26 @@ public class MyAdapter extends BaseAdapter{
   }
  }
 ```
-
+### 6.一些特殊情况
+1.有人可能发现有时候设置一个宽高相等的正方形View却变成了长方形，这是因为设计图的宽高和实际屏幕宽高比列不一样造成的，解决方法就是只按照宽或者高的比列适配(推荐按照宽度比例适配，宽度比例一般误差很小)，一般情况只需要修改单个View的适配方式，方法如下：
+```java
+AutoFit.setViewLayoutParams(view,宽度，高度,FIT_TYPE.WIDTH);
+```
+```java
+/**
+   * @param view
+   * @param width   传入小于0的数表示不做改变
+   * @param height  传入小于0的数表示不做改变
+   * @param magin   动态传入Magin参数 左上右下 可以不传
+   * @param fitType 适配方式：按照宽度的比例适配或高度，或者宽按宽度，高按高度。
+   * @return
+   */
+  public static void setViewLayoutParams(View view, int width, int height, FIT_TYPE fitType, float... magin) {}
+```
+全部View按照宽度适配:
+```java
+AutoFit.fit(view,FIT_TYPE.WIDTH);
+```
 
     
 
