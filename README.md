@@ -13,8 +13,8 @@
 在使用API前调用初始化一次：AutoFit.init()，参数需要传入设计图的尺寸等，推荐在Applaction类的OnCreate()方法里
 
 ### 2.单个View适配
-获取到需要适配的View，调用AutoFit.fit(view)即可。
-### 3.在Fragment适配
+获取到需要适配的View，调用AutoFit.setViewLayoutParams(view,width,height)即可。
+### 3.在Fragment适配所有View
 
 ```java
 public class MyFragment extends Fragment{
@@ -27,7 +27,7 @@ public class MyFragment extends Fragment{
   }
 } 
 ```
-### 4.在Activity适配
+### 4.在Activity适配所有View
 ```java
 public class MainActivity extends AppCompatActivity {
   @Override
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
   }
 }
 ```
-### 5.在Adapter适配
+### 5.在Adapter适配所有View
 在Adapter的getview方法返回之前调用AutoFit.fit(convertView);
 ```java
 public class MyAdapter extends BaseAdapter{
