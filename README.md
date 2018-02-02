@@ -13,8 +13,8 @@
 在使用API前调用初始化一次：AutoFit.init()，参数需要传入设计图的尺寸等，推荐在Applaction类的OnCreate()方法里
 
 ### 2.单个View适配
-获取到需要适配的View，调用AutoFit.fit(view)即可。
-### 3.在Fragment适配
+获取到需要适配的View，调用AutoFit.setViewLayoutParams(view,width,height)即可。
+### 3.在Fragment适配所有View
 
 ```java
 public class MyFragment extends Fragment{
@@ -27,7 +27,7 @@ public class MyFragment extends Fragment{
   }
 } 
 ```
-### 4.在Activity适配
+### 4.在Activity适配所有View
 ```java
 public class MainActivity extends AppCompatActivity {
   @Override
@@ -39,7 +39,16 @@ public class MainActivity extends AppCompatActivity {
   }
 }
 ```
-### 5.在Adapter适配
+如果不想再每个Activity都写上这么一句话，可以选择把代码写入BaseActivity,然后只需要继承他就好，比如这样：
+```java
+  @Override
+  public void setContentView(int layoutResID) {
+    View view= LayoutInflater.from(this).inflate(layoutResID,null,false);
+    AutoFit.fit(view);
+    super.setContentView(view);
+  }
+```
+### 5.在Adapter适配所有View
 在Adapter的getview方法返回之前调用AutoFit.fit(convertView);
 ```java
 public class MyAdapter extends BaseAdapter{
@@ -52,7 +61,27 @@ public class MyAdapter extends BaseAdapter{
   }
  }
 ```
-
+### 6.一些特殊情况
+1. 有人可能发现有时候设置一个宽高相等的正方形View却变成了长方形，这是因为设计图的宽高和实际屏幕宽高比列不一样造成的，解决方法就是只按照宽或者高的比列适配(推荐按照宽度比例适配，宽度比例一般误差很小)，一般情况只需要修改单个View的适配方式，方法如下：
+```java
+AutoFit.setViewLayoutParams(view,宽度，高度,FIT_TYPE.WIDTH);
+```
+```java
+/**
+   * @param view
+   * @param width   传入小于0的数表示不做改变
+   * @param height  传入小于0的数表示不做改变
+   * @param magin   动态传入Magin参数 左上右下 可以不传
+   * @param fitType 适配方式：按照宽度的比例适配或高度，或者宽按宽度，高按高度。
+   * @return
+   */
+  public static void setViewLayoutParams(View view, int width, int height, FIT_TYPE fitType, float... magin) {}
+```
+全部View按照宽度适配:
+```java
+AutoFit.fit(view,FIT_TYPE.WIDTH);
+```
+2. 有人可能会质疑效率问题，经过我的测试，1000行xml 嵌套5层 只用了62ms，所以完全不用担心效率问题
 
     
 
