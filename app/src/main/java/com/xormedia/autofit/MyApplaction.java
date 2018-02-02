@@ -1,6 +1,8 @@
 package com.xormedia.autofit;
 
+import android.app.Activity;
 import android.app.Application;
+import android.os.Bundle;
 
 import com.bing.autofit.AutoFit;
 
