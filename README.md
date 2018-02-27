@@ -56,8 +56,20 @@ public class MyAdapter extends BaseAdapter{
   @Override
   public View getView(int position, View convertView, ViewGroup parent) {
     //.....
-    AutoFit.fit(convertView);
     return convertView;
+  }
+  class ViewHolder {
+    private TextView mIndex;
+    private TextView mContent;
+    private TriangleTextView mTriangleTextview;
+
+    private void initView(View convertView) {
+      AutoFit.fit(convertView);
+      mIndex = (TextView) convertView.findViewById(R.id.index);
+      mContent = (TextView) convertView.findViewById(R.id.content);
+      mTriangleTextview = (TriangleTextView) convertView.findViewById(R.id.triangle_textview);
+    }
+
   }
  }
 ```
