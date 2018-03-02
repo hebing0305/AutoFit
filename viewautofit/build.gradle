@@ -6,7 +6,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 26
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.2"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -55,8 +55,8 @@ publish {
     repoName = 'bing'
     groupId = 'com.bing'//jcenter上的路径
     artifactId = 'AutoFit'//项目名称
-    publishVersion = '1.0.0'//版本号
-    desc = '一个Android屏幕适配方案'//描述，不重要
+    publishVersion = '1.0.2'//版本号
+    desc = '修复了重复调用会多次适配得问题。'//描述，不重要
     website = 'https://github.com/hebing0305/AutoFit'//网站，不重要；尽量模拟github上的地址，例如我这样的；当然你有地址最好了
     bintrayUser = 'hebing0305'
     bintrayKey = 'ace5221f542a889163ea7cef5c9b09895a891f4b'
