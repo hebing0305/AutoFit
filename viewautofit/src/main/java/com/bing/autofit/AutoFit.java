@@ -88,7 +88,7 @@ public class AutoFit {
    * @param fitType 是否按照
    */
   public static void fit(View view, FIT_TYPE fitType) {
-    if (view == null)
+    if (view == null||view.getTag(android.R.string.ok)!=null)
       return;
     ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
     if (layoutParams != null) {
@@ -124,6 +124,7 @@ public class AutoFit {
         fit(child,fitType);
       }
     }
+    view.setTag(android.R.string.ok,android.R.string.ok);//保存一个Tag 代表已经适配过这个View，不再重新适配
   }
 
   /**
