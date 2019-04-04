@@ -6,7 +6,7 @@
 适配的方式是按照设计图尺寸和屏幕尺寸的比例适配，相当于百分比适配，只需要你对需要调用适配方法传入需要适配的View即可。
 可以适配的属性目前有 View的宽高，magin，pading textview的size。
 ## 依赖包下载
-    [点击进入下载页](https://github.com/hebing0305/AutoFit/releases)
+    [点击进入下载页](https://github.com/hebing0305/AutoFit/releases "下载页面")
 ## 使用说明
 
 ### 1.初始化
