@@ -4,7 +4,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import com.bing.autofit.AutoFit;
+import com.bing.autofit.ViewUtils;
 
 /**
  * Created by Bing on 2018/1/31.
@@ -14,7 +14,7 @@ public class MyAdapter extends BaseAdapter{
   @Override
   public View getView(int position, View convertView, ViewGroup parent) {
     //.....
-    AutoFit.fit(convertView);
+    ViewUtils.autoFit(convertView);
     return convertView;
   }
   @Override

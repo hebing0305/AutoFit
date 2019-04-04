@@ -6,10 +6,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 26
         versionCode 1
-        versionName "1.0.2"
-
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
+        versionName "1.0.3"
     }
     buildTypes {
         release {
@@ -17,49 +14,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    lintOptions {
+        //lint 遇到 error 时继续 构建
+        abortOnError false
+    }
 }
 
 dependencies {
 
-}
-
-/** 以下开始是将Android Library上传到jcenter的相关配置**/
-
-// 生成jar包的task，不需要修改。
-task sourcesJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
-    classifier = 'sources'
-}
-
-// 生成jarDoc的task，不需要修改。
-task javadoc(type: Javadoc) {
-    source = android.sourceSets.main.java.srcDirs
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-    // destinationDir = file("../javadoc/")
-    failOnError false // 忽略注释语法错误，如果用jdk1.8你的注释写的不规范就编译不过。
-}
-
-// 生成javaDoc的jar，不需要修改。
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
-artifacts {
-    archives javadocJar
-    archives sourcesJar
-}
-
-apply plugin: 'com.novoda.bintray-release'
-publish {
-    userOrg = 'hebing0305'//bintray.com用户名
-    repoName = 'bing'
-    groupId = 'com.bing'//jcenter上的路径
-    artifactId = 'AutoFit'//项目名称
-    publishVersion = '1.0.2'//版本号
-    desc = '修复了重复调用会多次适配得问题。'//描述，不重要
-    website = 'https://github.com/hebing0305/AutoFit'//网站，不重要；尽量模拟github上的地址，例如我这样的；当然你有地址最好了
-    bintrayUser = 'hebing0305'
-    bintrayKey = 'ace5221f542a889163ea7cef5c9b09895a891f4b'
-    dryRun=false
 }
 

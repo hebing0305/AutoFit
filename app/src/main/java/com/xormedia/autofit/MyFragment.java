@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.bing.autofit.AutoFit;
+import com.bing.autofit.ViewUtils;
 
 /**
  * Created by Bing on 2018/1/31.
@@ -18,7 +18,7 @@ public class MyFragment extends Fragment{
   @Override
   public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
     View view=inflater.inflate(R.layout.activity_main,container);
-    AutoFit.fit(view);
+    ViewUtils.autoFit(view);
     return view;
   }
 }
