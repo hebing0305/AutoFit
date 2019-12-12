@@ -2,3 +2,4 @@ install:
   - echo "Running a custom install command"
   - ./chmod +x gradlew
   - ./gradlew publish
+  - echo "Run OK"
