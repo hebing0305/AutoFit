@@ -1,18 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.jfrog.bintray'
 apply plugin: 'maven-publish'
-//apply plugin: 'com.novoda.bintray-release'
-//添加
-//publish {
-//    userOrg = 'hebing0305'//bintray.com用户名
-//    repoName = 'bing'   // bintray上仓库的名字
-//    groupId = 'com.bing'//jcenter上的路径
-//    artifactId = 'autofit'//项目名称
-//    publishVersion = '2.0.3'//版本号
-//    desc = '屏幕适配帮助类'// 描述
-//    website = 'https://github.com/hebing0305/AutoFit'//一般填github 项目地址,一定是要有效的地址
-//}
-//gradlew clean build bintrayUpload -PbintrayUser=hebing0305 -PbintrayKey=ace5221f542a889163ea7cef5c9b09895a891f4b -PdryRun=false
 
 android {
     compileSdkVersion 26
@@ -39,7 +27,8 @@ android {
 def gitUrl = 'https://github.com/hebing0305/AutoFit.git'   // Git仓库的url
 def groupIdDefined = "com.bing"
 def artifactIdDefined = "autofit"
-def versionDefined = "2.0.6"
+def versionDefined = "2.0.7"
+def desc = "一个屏幕适配的帮助类"//版本描述
 
 bintray {
     user = 'hebing0305'
@@ -54,6 +43,8 @@ bintray {
         vcsUrl = "$gitUrl"
         version {
             name = "$versionDefined"
+            desc = "$desc"//版本描述
+            released = new Date()
         }
     }
 

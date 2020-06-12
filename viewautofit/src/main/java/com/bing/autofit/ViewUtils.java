@@ -25,6 +25,10 @@ public class ViewUtils {
     WIDTH, WIDTH_HEIGHT
   }
 
+  public static void init(Context context,int width,int height){
+    new DisplayUtil(context,width,height);
+  }
+
   /**
    * @param view
    * @param width   传入小于0的数表示不做改变

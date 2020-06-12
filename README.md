@@ -12,10 +12,17 @@ implementation 'com.bing:autofit:2.0.3'
 ## 使用说明
 
 ### 1.初始化
-在使用API前调用初始化一次：new DisplayUtil(this,1920,1080);，参数需要传入设计图的尺寸等，推荐在Applaction类的OnCreate()方法里
+在使用API前调用初始化一次：
+```java
+ViewUtils.init(this,1920,1080);
+```
+参数需要传入设计图的尺寸等，推荐在Applaction类的OnCreate()方法里
 
 ### 2.单个View适配
-获取到需要适配的View，调用ViewUtils.setViewLayoutParams(view,width,height)即可。
+获取到需要适配的View，调用:
+```java
+ViewUtils.setViewLayoutParams(view,width,height)
+```
 ### 3.在Fragment适配所有View
 
 ```java
