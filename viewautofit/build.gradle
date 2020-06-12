@@ -1,4 +1,6 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'maven-publish'
 //apply plugin: 'com.novoda.bintray-release'
 //添加
 //publish {
@@ -30,7 +32,91 @@ android {
         //lint 遇到 error 时继续 构建
         abortOnError false
     }
+
 }
+
+// 以下是关于发布到jcenter操作
+def gitUrl = 'https://github.com/hebing0305/AutoFit.git'   // Git仓库的url
+def groupIdDefined = "com.bing"
+def artifactIdDefined = "autofit"
+def versionDefined = "2.0.6"
+
+bintray {
+    user = 'hebing0305'
+    key = 'ace5221f542a889163ea7cef5c9b09895a891f4b'
+    publications = ['release']
+    publish = true
+    pkg {
+        repo = 'bing'
+        name = 'autofit'
+        userOrg = 'hebing0305'
+        licenses = ['Apache-2.0']
+        vcsUrl = "$gitUrl"
+        version {
+            name = "$versionDefined"
+        }
+    }
+
+}
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
+                // Applies the component for the release build variant.
+                from components.release
+                artifact sourcesJar
+                artifact javadocJar
+                // You can then customize attributes of the publication as shown below.
+                groupId = "$groupIdDefined"
+                artifactId = "$artifactIdDefined"
+                version = "$versionDefined"
+                pom.withXml {
+                    def dependenciesNode = asNode().appendNode('dependencies')
+                    // Iterate over the implementation dependencies (we don't want the test ones), adding a <dependency> node for each
+                    configurations.implementation.allDependencies.each {
+                        // Ensure dependencies such as fileTree are not included in the pom.
+                        if (it.name != 'unspecified') {
+                            def dependencyNode = dependenciesNode.appendNode('dependency')
+                            dependencyNode.appendNode('groupId', it.group)
+                            dependencyNode.appendNode('artifactId', it.name)
+                            dependencyNode.appendNode('version', it.version)
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// 生成sourceJar和javaDocJar构件
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task javadoc(type: Javadoc) {
+    failOnError false
+    source = android.sourceSets.main.java.sourceFiles
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    classpath += configurations.compile
+}
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives sourcesJar
+    archives javadocJar
+}
+
+
+
+
+
+
+
 
 
 
