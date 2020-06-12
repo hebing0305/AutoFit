@@ -1,4 +1,16 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
+//添加
+publish {
+    userOrg = 'hebing0305'//bintray.com用户名
+    repoName = 'bing'   // bintray上仓库的名字
+    groupId = 'com.bing'//jcenter上的路径
+    artifactId = 'autofit'//项目名称
+    publishVersion = '2.0.3'//版本号
+    desc = '屏幕适配帮助类'// 描述
+    website = 'https://github.com/hebing0305/AutoFit'//一般填github 项目地址,一定是要有效的地址
+}
+//gradlew clean build bintrayUpload -PbintrayUser=hebing0305 -PbintrayKey=ace5221f542a889163ea7cef5c9b09895a891f4b -PdryRun=false
 
 android {
     compileSdkVersion 26
@@ -6,8 +18,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 26
         versionCode 3
-
-        versionName "2.0"
+        versionName "2.0.3"
     }
     buildTypes {
         release {
@@ -21,8 +32,6 @@ android {
     }
 }
 
-apply plugin: 'com.github.dcendents.android-maven'
-group='com.bing.autofit'
 
 
 
