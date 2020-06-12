@@ -27,7 +27,7 @@ android {
 def gitUrl = 'https://github.com/hebing0305/AutoFit.git'   // Git仓库的url
 def groupIdDefined = "com.bing"
 def artifactIdDefined = "autofit"
-def versionDefined = "2.0.7"
+def versionDefined = "2.0.9"
 def desc = "一个屏幕适配的帮助类"//版本描述
 
 bintray {
@@ -87,10 +87,12 @@ task sourcesJar(type: Jar) {
 }
 
 task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath = files(android.bootClasspath)
+    destinationDir = file("../javadoc/")
+    options.encoding = "utf-8"
+    options.charSet = "utf-8"
     failOnError false
-    source = android.sourceSets.main.java.sourceFiles
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-    classpath += configurations.compile
 }
 task javadocJar(type: Jar, dependsOn: javadoc) {
     classifier = 'javadoc'
@@ -101,6 +103,8 @@ artifacts {
     archives sourcesJar
     archives javadocJar
 }
+
+
 
 
 

@@ -7,7 +7,7 @@
 可以适配的属性目前有 View的宽高，magin，pading textview的size。
 ## 依赖包下载
 ```java
-implementation 'com.bing:autofit:2.0.3'
+implementation 'com.bing:autofit:2.0.9'
 ```
 ## 使用说明
 
